@@ -69,5 +69,4 @@ Proyek ini dibuat untuk keperluan akademik. Silakan gunakan, ubah, dan distribus
 
 ---
 
-## 🙌 Kontribusi
 
