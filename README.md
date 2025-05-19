@@ -38,7 +38,7 @@ Proyek ini mendukung SDG 11 dengan meningkatkan keamanan lingkungan dari risiko 
 | 6  | Kabel Jumper            | ![Jumper Wire](gambar/6.jpg) | Penghubung antar komponen                                              |
 | 7  | Resistor (220–330Ω)     | ![Resistor](gambar/7.jpg) | Pembatas arus ke LED                                                  |
 | 8  | Kabel Micro USB         | ![USB Cable](gambar/8.jpg) | Koneksi ESP32 ke komputer/laptop                                      |
-| 9  | Koneksi WiFi            | ![WiFi](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wifi_icon.svg/120px-Wifi_icon.svg.png) | Untuk mengirim pesan ke Telegram                                       |
+| 9  | Koneksi WiFi            | ![WiFi]([https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wifi_icon.svg/120px-Wifi_icon.svg.png](https://cdn-icons-png.freepik.com/512/5915/5915249.png?ga=GA1.1.2109248255.1747624451)) | Untuk mengirim pesan ke Telegram                                       |
 | 10 | Telegram + Bot API      | ![Telegram](https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg) | Menerima alert melalui bot Telegram                                   |
 
 ---
