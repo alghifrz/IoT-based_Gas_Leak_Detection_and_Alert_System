@@ -44,7 +44,7 @@ Proyek ini mendukung SDG 11 dengan meningkatkan keamanan lingkungan dari risiko 
 ---
 
 ## 📷 Diagram Blok Sistem
-![Diagram Blok](gambar/alur.jpg)
+![Diagram Blok](gambar/sbd.png)
 Sistem deteksi kebocoran gas ini mengikuti alur kerja yang terpadu dengan ESP32 sebagai pusat kendali utama. Proses dimulai ketika terjadi kebocoran gas di lingkungan. Gas yang bocor ini kemudian terdeteksi oleh sensor MQ-2, yang dirancang khusus untuk mengenali keberadaan gas-gas berbahaya seperti LPG, propana, hidrogen, dan gas mudah terbakar lainnya di udara.
 Setelah mendeteksi adanya kebocoran gas, sensor MQ-2 mengirimkan data pengukuran ke mikrokontroler ESP32. ESP32 bertindak sebagai otak dari sistem ini, memproses data yang diterima dari sensor. Dalam ESP32 sudah terdapat pesan peringatan (alert message) yang telah didefinisikan sebelumnya, siap untuk dikirimkan ketika kondisi kebocoran gas terdeteksi.
 Berdasarkan data dari sensor MQ-2, ESP32 kemudian mengeksekusi empat tindakan penting secara terkoordinasi:
