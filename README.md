@@ -44,13 +44,17 @@ Proyek ini mendukung SDG 11 dengan meningkatkan keamanan lingkungan dari risiko 
 ---
 
 ## 📷 Diagram Blok Sistem
-![Diagram Blok](gambar/alur.jpg)
+![Diagram Blok](gambar/sbd.png)
 Sistem deteksi kebocoran gas ini mengikuti alur kerja yang terpadu dengan ESP32 sebagai pusat kendali utama. Proses dimulai ketika terjadi kebocoran gas di lingkungan. Gas yang bocor ini kemudian terdeteksi oleh sensor MQ-2, yang dirancang khusus untuk mengenali keberadaan gas-gas berbahaya seperti LPG, propana, hidrogen, dan gas mudah terbakar lainnya di udara.
 Setelah mendeteksi adanya kebocoran gas, sensor MQ-2 mengirimkan data pengukuran ke mikrokontroler ESP32. ESP32 bertindak sebagai otak dari sistem ini, memproses data yang diterima dari sensor. Dalam ESP32 sudah terdapat pesan peringatan (alert message) yang telah didefinisikan sebelumnya, siap untuk dikirimkan ketika kondisi kebocoran gas terdeteksi.
 Berdasarkan data dari sensor MQ-2, ESP32 kemudian mengeksekusi empat tindakan penting secara terkoordinasi:
 Pertama, ESP32 mengaktifkan buzzer untuk memberikan peringatan audible yang dapat didengar di lokasi kejadian. Kedua, ESP32 juga mengaktifkan LED sebagai indikator visual untuk memberikan peringatan yang dapat dilihat. Ketiga, ESP32 mengirimkan pesan peringatan yang sudah tersedia langsung kepada pengguna melalui Telegram Bot, tanpa perlu membuat pesan baru. Ini memungkinkan notifikasi cepat dan pemantauan jarak jauh dari situasi berbahaya tersebut.
 Keberadaan LED dalam sistem ini juga memiliki nilai tambah karena berkontribusi pada pencapaian Sustainable Development Goals (SDGs), khususnya dalam aspek peningkatan keamanan, pencegahan kecelakaan, dan pengembangan infrastruktur yang tangguh terhadap bencana terkait kebocoran gas.
 Dengan arsitektur yang terpusat pada sensor MQ-2 untuk deteksi dan ESP32 untuk koordinasi respons, sistem ini memberikan mekanisme keamanan yang komprehensif, terintegrasi, dan responsif. ESP32 dapat langsung menggunakan template pesan yang sudah tersedia untuk komunikasi dengan pengguna melalui Telegram Bot, menghasilkan waktu respons yang lebih cepat dalam situasi darurat.
+
+---
+## Flowchart
+![Flowchart](gambar/flowchart.jpeg)
 
 ---
 
