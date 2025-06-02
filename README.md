@@ -53,6 +53,10 @@ Keberadaan LED dalam sistem ini juga memiliki nilai tambah karena berkontribusi 
 Dengan arsitektur yang terpusat pada sensor MQ-2 untuk deteksi dan ESP32 untuk koordinasi respons, sistem ini memberikan mekanisme keamanan yang komprehensif, terintegrasi, dan responsif. ESP32 dapat langsung menggunakan template pesan yang sudah tersedia untuk komunikasi dengan pengguna melalui Telegram Bot, menghasilkan waktu respons yang lebih cepat dalam situasi darurat.
 
 ---
+## Flowchart
+![Flowchart](gambar/flowchart.jpeg)
+
+---
 
 ## 🛠️ Teknologi
 - ESP32 dengan MicroPython
