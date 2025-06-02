@@ -7,13 +7,17 @@
 ---
 
 ## 📌 Deskripsi Singkat
-Sistem ini merupakan alat pendeteksi kebocoran gas berbasis IoT yang menggunakan sensor MQ-2 yang terpasang pada ESP32 dengan pemrograman MicroPython. Ketika sensor mendeteksi gas berbahaya seperti LPG, metana, atau asap dalam jumlah berlebih, sistem akan mengaktifkan buzzer dan LED sebagai peringatan di lokasi. Selain itu, sistem juga mengirimkan notifikasi secara real-time ke akun Telegram pengguna untuk memberikan peringatan jarak jauh. Sistem ini dirancang sebagai solusi dini untuk mencegah kebakaran akibat kebocoran gas.
+Sistem ini merupakan alat pendeteksi kebocoran gas berbasis IoT yang menggunakan sensor MQ-2 yang terpasang pada ESP32 dengan pemrograman MicroPython. Ketika sensor mendeteksi gas berbahaya seperti LPG, metana, atau asap dalam jumlah berlebih, sistem akan mengaktifkan buzzer dan LED sebagai peringatan di lokasi.
+Sistem ini juga dilengkapi dengan LCD 16x2 yang menampilkan informasi real-time seperti kadar gas yang terdeteksi, nilai ambang batas (threshold), serta kondisi sistem. Jika kadar gas berada di bawah ambang batas, LCD akan menampilkan tulisan "Kondisi Normal". Namun, jika terdeteksi kadar gas melebihi threshold, LCD akan menampilkan peringatan "Gas bocor terdeteksi".
+Selain peringatan lokal, sistem juga mengirimkan notifikasi secara real-time ke akun Telegram pengguna, sehingga pengguna tetap mendapatkan peringatan jarak jauh meskipun tidak berada di lokasi.
+Dengan kombinasi antara peringatan visual melalui LCD, audio-visual lokal dengan buzzer dan LED, serta notifikasi jarak jauh melalui Internet, sistem ini dirancang sebagai solusi deteksi dini yang efektif untuk mencegah kebakaran akibat kebocoran gas.
 
 ---
 
 ## 🎯 Tujuan
 - Mendeteksi kebocoran gas secara real-time dengan sensor MQ-2.
 - Memberikan peringatan lokal melalui LED dan buzzer.
+- Memberikan peringatan visual melalui LCD.
 - Mengirim alert message ke Telegram sebagai pengingat jarak jauh.
 - Meningkatkan keselamatan rumah tangga/tempat usaha dari risiko kebakaran gas.
 - Mendukung penerapan IoT untuk menciptakan lingkungan yang aman dan berkelanjutan.
@@ -37,9 +41,10 @@ Proyek ini mendukung SDG 11 dengan meningkatkan keamanan lingkungan dari risiko 
 | 5  | Breadboard              | ![Breadboard](gambar/5.jpg) | Media penyambung komponen sementara                                   |
 | 6  | Kabel Jumper            | ![Jumper Wire](gambar/6.jpg) | Penghubung antar komponen                                              |
 | 7  | Resistor (220–330Ω)     | ![Resistor](gambar/7.jpg) | Pembatas arus ke LED                                                  |
-| 8  | Kabel Micro USB         | ![USB Cable](gambar/8.jpg) | Koneksi ESP32 ke komputer/laptop                                      |
-| 9  | Koneksi WiFi            | ![WiFi](gambar/9.png) | Untuk mengirim pesan ke Telegram                                       |
-| 10 | Telegram + Bot API      | ![Telegram](https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg) | Menerima alert melalui bot Telegram                                   |
+| 8  | LCD Display             | ![LCD](gambar/lcd.jpg) | Menampilkan informasi pada LCD                                        |
+| 9  | Kabel Micro USB         | ![USB Cable](gambar/8.jpg) | Koneksi ESP32 ke komputer/laptop                                      |
+| 10  | Koneksi WiFi           | ![WiFi](gambar/9.png) | Untuk mengirim pesan ke Telegram                                       |
+| 11 | Telegram + Bot API      | ![Telegram](https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg) | Menerima alert melalui bot Telegram                                   |
 
 ---
 
@@ -63,6 +68,7 @@ Dengan arsitektur yang terpusat pada sensor MQ-2 untuk deteksi dan ESP32 untuk k
 - Sensor MQ-2
 - Telegram Bot API
 - Buzzer + LED
+- LCD
 - Breadboard prototyping
 
 ---
