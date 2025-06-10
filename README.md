@@ -10,7 +10,8 @@
 Sistem ini merupakan alat pendeteksi kebocoran gas berbasis IoT yang menggunakan sensor MQ-2 yang terpasang pada ESP32 dengan pemrograman MicroPython. Ketika sensor mendeteksi gas berbahaya seperti LPG, metana, atau asap dalam jumlah berlebih, sistem akan mengaktifkan buzzer dan LED sebagai peringatan di lokasi.
 Sistem ini juga dilengkapi dengan LCD 16x2 yang menampilkan informasi real-time seperti kadar gas yang terdeteksi, nilai ambang batas (threshold), serta kondisi sistem. Jika kadar gas berada di bawah ambang batas, LCD akan menampilkan tulisan "Kondisi Normal". Namun, jika terdeteksi kadar gas melebihi threshold, LCD akan menampilkan peringatan "Gas bocor terdeteksi".
 Selain peringatan lokal, sistem juga mengirimkan notifikasi secara real-time ke akun Telegram pengguna, sehingga pengguna tetap mendapatkan peringatan jarak jauh meskipun tidak berada di lokasi.
-Dengan kombinasi antara peringatan visual melalui LCD, audio-visual lokal dengan buzzer dan LED, serta notifikasi jarak jauh melalui Internet, sistem ini dirancang sebagai solusi deteksi dini yang efektif untuk mencegah kebakaran akibat kebocoran gas.
+Sebagai fitur tambahan, sistem ini juga dilengkapi dengan web server sederhana yang dijalankan oleh ESP32. Web server ini dapat diakses melalui alamat IP lokal perangkat ketika terhubung ke jaringan WiFi yang sama. Melalui web interface ini, pengguna dapat memantau data sensor secara real-time menggunakan browser, sehingga memberikan alternatif pemantauan tambahan tanpa perlu berada di depan perangkat secara langsung.
+Dengan kombinasi antara peringatan visual melalui LCD, audio-visual lokal dengan buzzer dan LED, notifikasi jarak jauh melalui Internet, serta pemantauan real-time melalui web server lokal, sistem ini dirancang sebagai solusi deteksi dini yang efektif untuk mencegah kebakaran akibat kebocoran gas.
 
 ---
 
