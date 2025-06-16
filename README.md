@@ -56,6 +56,11 @@ ESP32 bertindak sebagai otak dari sistem ini, memproses data yang diterima dari 
 Sebagai fitur tambahan, ESP32 juga menjalankan web server sederhana yang dapat diakses melalui IP address perangkat di jaringan WiFi lokal, menampilkan data sensor terkini secara real-time untuk monitoring tambahan melalui browser web. Keberadaan komponen-komponen dalam sistem ini memiliki nilai tambah karena berkontribusi pada pencapaian Sustainable Development Goals (SDGs), khususnya dalam aspek peningkatan keamanan, pencegahan kecelakaan, dan pengembangan infrastruktur yang tangguh terhadap bencana terkait kebocoran gas. Dengan arsitektur yang terpusat pada sensor MQ-2 untuk deteksi, ESP32 untuk koordinasi respons dan web server lokal, serta LCD untuk display lokal, sistem ini memberikan mekanisme keamanan yang komprehensif, terintegrasi, dan responsif dengan multiple interface monitoring baik melalui display fisik maupun web interface lokal.
 
 ---
+
+
+## Implementasi Hardware dan Software
+![Implementasi Hardware dan Software](gambar/hardware.jpg)
+
 ## Flowchart
 ![Flowchart](gambar/flowchart.jpeg)
 
