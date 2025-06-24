@@ -59,7 +59,11 @@ Sebagai fitur tambahan, ESP32 juga menjalankan web server sederhana yang dapat d
 
 
 ## Implementasi Hardware dan Software
+### Hardware
 ![Implementasi Hardware dan Software](gambar/hardware.jpg)
+### Software
+![Implementasi Hardware dan Software](gambar/web1.jpg)
+![Implementasi Hardware dan Software](gambar/web2.jpg)
 
 ## Flowchart
 ![Flowchart](gambar/flowchart.jpeg)
@@ -81,5 +85,128 @@ Sebagai fitur tambahan, ESP32 juga menjalankan web server sederhana yang dapat d
 Proyek ini dibuat untuk keperluan akademik. Silakan gunakan, ubah, dan distribusikan dengan menyertakan kredit kepada pembuat asli.
 
 ---
+
+## Fitur Utama
+
+- **Sensor MQ2**: Deteksi gas berbahaya (LPG, CO, asap, dll)
+- **LCD Display**: Tampilan real-time status dan nilai sensor
+- **LED & Buzzer**: Indikator visual dan audio saat gas terdeteksi
+- **Web Interface**: Dashboard web untuk monitoring
+- **Telegram Bot**: Notifikasi otomatis ke Telegram
+- **Enkripsi DES**: Keamanan data sensor menggunakan DES encryption
+
+## Implementasi Enkripsi DES
+
+### Masalah Sebelumnya
+- Template HTML terlalu panjang (>8 karakter) untuk DES
+- Logs HTML bisa sangat panjang
+- Enkripsi yang tidak perlu pada variabel statis
+
+### Solusi yang Diterapkan
+
+#### 1. Fungsi Helper Enkripsi
+```python
+def encrypt_sensor_data(value, key):
+    """Enkripsi data sensor menggunakan DES"""
+    value_str = pad_to_8_chars(value)
+    encrypted = crypto.des_encrypt(value_str, key)
+    return bytes_to_hex(encrypted)
+
+def decrypt_sensor_data(hex_data, key):
+    """Dekripsi data sensor dari format hex"""
+    encrypted_bytes = bytes.fromhex(hex_data)
+    decrypted = crypto.des_decrypt(encrypted_bytes, key)
+    return decrypted.strip()
+```
+
+#### 2. Padding 8 Karakter
+```python
+def pad_to_8_chars(text):
+    """Pad atau truncate text ke tepat 8 karakter untuk DES"""
+    text_str = str(text)
+    if len(text_str) >= 8:
+        return text_str[:8]  # Truncate jika terlalu panjang
+    else:
+        return text_str + " " * (8 - len(text_str))  # Pad dengan spasi
+```
+
+#### 3. Enkripsi Selektif
+- **Yang dienkripsi**: Hanya nilai sensor yang penting (level gas)
+- **Yang tidak dienkripsi**: Template HTML, logs, status text, dll
+- **Format output**: Hexadecimal untuk kemudahan transmisi
+
+### Contoh Penggunaan
+
+```python
+# Enkripsi nilai sensor
+gas_level = 1234
+encrypted_level = encrypt_sensor_data(gas_level, key)
+print(f"Terenkripsi: {encrypted_level}")
+
+# Dekripsi nilai sensor
+decrypted_level = decrypt_sensor_data(encrypted_level, key)
+print(f"Terdekripsi: {decrypted_level}")
+```
+
+### Keuntungan Implementasi Baru
+
+1. **Efisien**: Hanya mengenkripsi data yang benar-benar perlu
+2. **Kompatibel**: Mengikuti batasan 8 karakter DES
+3. **Handal**: Error handling untuk enkripsi/dekripsi
+4. **Praktis**: Format hex untuk kemudahan transmisi
+5. **Demo**: Fungsi demo untuk testing
+
+## Hardware Requirements
+
+- ESP32 Development Board
+- MQ2 Gas Sensor
+- LCD 16x2 dengan interface 4-bit
+- LED dan Buzzer
+- Kabel jumper
+
+## Pin Configuration
+
+```python
+# Sensor MQ2
+mq2_analog = ADC(Pin(34))  # Analog pin
+mq2_digital = Pin(27, Pin.IN)  # Digital pin
+
+# Output devices
+led = Pin(2, Pin.OUT)
+buzzer = Pin(4, Pin.OUT)
+
+# LCD pins
+lcd_rs = Pin(19, Pin.OUT)
+lcd_en = Pin(23, Pin.OUT)
+lcd_d4 = Pin(18, Pin.OUT)
+lcd_d5 = Pin(5, Pin.OUT)
+lcd_d6 = Pin(12, Pin.OUT)
+lcd_d7 = Pin(13, Pin.OUT)
+```
+
+## Konfigurasi
+
+1. **WiFi**: Update `ssid` dan `password`
+2. **Telegram**: Update `bot_token` dan `chat_id`
+3. **Enkripsi**: Update `key` untuk DES encryption
+
+## Cara Kerja
+
+1. **Startup**: Kalibrasi sensor selama 30 detik
+2. **Monitoring**: Baca sensor setiap 200ms
+3. **Alert**: Jika nilai > threshold, aktifkan alarm
+4. **Notifikasi**: Kirim pesan Telegram dengan data terenkripsi
+5. **Web**: Dashboard real-time di port 80
+
+## Troubleshooting
+
+Lihat file `TROUBLESHOOTING_TELEGRAM.md` untuk masalah umum dengan Telegram bot.
+
+## Keamanan
+
+- Data sensor dienkripsi menggunakan DES
+- Key enkripsi dapat dikustomisasi
+- Format hex untuk transmisi yang aman
+- Error handling untuk mencegah crash
 
 
