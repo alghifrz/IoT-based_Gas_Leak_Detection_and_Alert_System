@@ -2,7 +2,7 @@
 import crypto  # Import crypto module for DES encryption
 
 # DES encryption key (sama dengan di boot.py)
-DES_KEY = "GASKEY01"
+DES_KEY = "Sliterin"
 
 def get_timestamp():
     """Get current timestamp in formatted string"""
